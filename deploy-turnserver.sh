@@ -17,7 +17,7 @@ userdb=/var/lib/turn/turndb
 # use real-valid certificate/privatekey files
 cert=/etc/ssl/turn_server_cert.pem
 pkey=/etc/ssl/turn_server_pkey.pem
-min-port=25000
+min-port=25001
 max-port=30000
 log-file=stdout
 "  | tee /etc/turnserver.conf
