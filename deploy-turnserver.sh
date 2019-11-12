@@ -20,6 +20,7 @@ pkey=/etc/ssl/turn_server_pkey.pem
 min-port=25001
 max-port=30000
 log-file=stdout
+verbose
 "  | tee /etc/turnserver.conf
 
 
