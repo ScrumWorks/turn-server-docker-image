@@ -24,7 +24,7 @@ docker run -d -p 80:80 -p 80:80/udp --restart=always turn-server username passwo
 
 The container generates `/etc/turnserver.conf` at startup with these defaults:
 
-- **Listening port:** 80 (TCP + UDP)
+- **Listening port:** 80 (TCP + UDP), configurable via `TURN_PORT`
 - **Relay ports:** 25001-30000
 - **Auth:** `use-auth-secret` (recommended) or `lt-cred-mech` (legacy)
 - **STUN FINGERPRINT:** enabled
@@ -35,6 +35,7 @@ The container generates `/etc/turnserver.conf` at startup with these defaults:
 | Variable | Description | Default |
 |---|---|---|
 | `TURN_SECRET` | Shared secret for REST API auth (recommended) | — |
+| `TURN_PORT` | Listening port (TCP + UDP) | `80` |
 | `TURN_REALM` | TURN realm | `turn.example.com` (secret mode) or positional arg `$3` (legacy) |
 | `EXTERNAL_IP` | Public IP for relay candidates | auto-detected via `dig` |
 | `INTERNAL_IP` | Internal/listening IP | auto-detected via `ip` |
