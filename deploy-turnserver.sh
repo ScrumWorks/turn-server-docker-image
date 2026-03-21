@@ -17,7 +17,9 @@ else
   exit 1
 fi
 
-config="listening-port=80
+port="${TURN_PORT:-80}"
+
+config="listening-port=$port
 listening-ip=$internalIp
 relay-ip=$internalIp
 external-ip=$externalIp
@@ -38,7 +40,7 @@ static-auth-secret=$TURN_SECRET"
 
   echo "$config" | tee /etc/turnserver.conf
 
-  echo "TURN server starting (secret auth). IP: $externalIp, realm: $realm"
+  echo "TURN server starting (secret auth). IP: $externalIp, port: $port, realm: $realm"
 else
   config="$config
 lt-cred-mech
@@ -48,7 +50,7 @@ userdb=/var/lib/turn/turndb"
 
   turnadmin -a -u "$1" -p "$2" -r "$realm"
 
-  echo "TURN server starting (legacy auth). IP: $externalIp, username: $1"
+  echo "TURN server starting (legacy auth). IP: $externalIp, port: $port, username: $1"
 fi
 
 exec turnserver
