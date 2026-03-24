@@ -1,0 +1,9 @@
+#!/bin/bash
+# Called by acme.sh after certificate renewal to reload coturn
+pid=$(pgrep -x turnserver 2>/dev/null || true)
+if [ -n "$pid" ]; then
+  echo "ACME: Reloading coturn (PID $pid) after certificate renewal"
+  kill -SIGUSR2 "$pid"
+else
+  echo "ACME: coturn not running, skipping reload"
+fi

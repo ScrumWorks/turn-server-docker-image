@@ -1,0 +1,12 @@
+.idea/
+.vscode/
+.DS_Store
+.claude/
+*.swp
+*.swo
+*~
+.env
+.git/
+.gitignore
+.dockerignore
+README.md
